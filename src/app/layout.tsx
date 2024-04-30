@@ -1,9 +1,10 @@
+import { Header } from "@/components/Header/Header";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Nunito } from "next/font/google";
 import { Provider } from "../trpc/Provider";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Nunito({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,10 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Provider>{children}</Provider>
-      </body>
+    <html lang="pt-BR" className={inter.className}>
+      <Provider>
+        <body>
+          <Header />
+          <main>{children}</main>
+        </body>
+      </Provider>
     </html>
   );
 }
