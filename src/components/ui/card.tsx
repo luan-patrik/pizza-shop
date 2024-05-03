@@ -2,7 +2,9 @@ import { MoneyFormatterBRL } from "@/hooks/useMoneyFormatterBRL";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { ButtonHTMLAttributes, HTMLAttributes, forwardRef } from "react";
+import { MoreDetails } from "../MoreDetails";
 import { Button } from "./button";
+import { DrawerTrigger } from "./drawer";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   image: string;
@@ -13,16 +15,20 @@ interface CardButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 const CardButton = forwardRef<HTMLButtonElement, CardButtonProps>(
   ({ className, ...props }, ref) => {
     return (
-      <Button
-        ref={ref}
-        {...props}
-        className={cn(
-          "p-0 h-auto w-min absolute right-0 bottom-0 rounded-tl-xl rounded-tr-none rounded-b-none px-2",
-          className
-        )}
-      >
-        + ADD
-      </Button>
+      <MoreDetails>
+        <DrawerTrigger asChild>
+          <Button
+            ref={ref}
+            {...props}
+            className={cn(
+              "p-0 h-auto w-min absolute right-0 bottom-0 rounded-tl-xl rounded-tr-none rounded-b-none px-2",
+              className
+            )}
+          >
+            + ADD
+          </Button>
+        </DrawerTrigger>
+      </MoreDetails>
     );
   }
 );
