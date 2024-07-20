@@ -1,0 +1,41 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  name     String
+  email    String  @unique
+  password String
+  avatar   String?
+
+  @@map("users")
+}
+
+model CompanySettings {
+  id                Int             @id @default(autoincrement())
+  name              String
+  openingTime       DateTime
+  closingTime       DateTime
+  location          CompanyLocation @relation(fields: [companyLocationId], references: [id])
+  companyLocationId Int
+
+  @@map("company-settings")
+}
+
+model CompanyLocation {
+  id              Int               @id @default(autoincrement())
+  city            String
+  address         String
+  number          Int
+  CompanySettings CompanySettings[]
+
+  @@map("company-location")
+}

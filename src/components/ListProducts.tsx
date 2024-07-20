@@ -1,3 +1,4 @@
+import { Virtuoso } from "react-virtuoso";
 import {
   Card,
   CardContent,
@@ -8,63 +9,22 @@ import {
 
 export const ListProducts = () => {
   return (
-    <>
-      <Card image="/assets/margarita.png">
-        <CardContent>
-          <CardHeader>Teste</CardHeader>
-          <CardDescription>Ola Pizza</CardDescription>
-          <CardFooter price={23.99} />
-        </CardContent>
-      </Card>
-      <Card image="/assets/margarita.png">
-        <CardContent>
-          <CardHeader>Teste</CardHeader>
-          <CardDescription>Ola Pizza</CardDescription>
-          <CardFooter price={10} />
-        </CardContent>
-      </Card>
-      <Card image="/assets/margarita.png">
-        <CardContent>
-          <CardHeader>Teste</CardHeader>
-          <CardDescription>Ola Pizza</CardDescription>
-          <CardFooter price={10} />
-        </CardContent>
-      </Card>
-      <Card image="/assets/margarita.png">
-        <CardContent>
-          <CardHeader>Teste</CardHeader>
-          <CardDescription>Ola Pizza</CardDescription>
-          <CardFooter price={10} />
-        </CardContent>
-      </Card>
-      <Card image="/assets/margarita.png">
-        <CardContent>
-          <CardHeader>Teste</CardHeader>
-          <CardDescription>Ola Pizza</CardDescription>
-          <CardFooter price={10} />
-        </CardContent>
-      </Card>
-      <Card image="/assets/margarita.png">
-        <CardContent>
-          <CardHeader>Teste</CardHeader>
-          <CardDescription>Ola Pizza</CardDescription>
-          <CardFooter price={10} />
-        </CardContent>
-      </Card>
-      <Card image="/assets/margarita.png">
-        <CardContent>
-          <CardHeader>Teste</CardHeader>
-          <CardDescription>Ola Pizza</CardDescription>
-          <CardFooter price={10} />
-        </CardContent>
-      </Card>
-      <Card image="/assets/margarita.png">
-        <CardContent>
-          <CardHeader>Teste</CardHeader>
-          <CardDescription>Ola Pizza</CardDescription>
-          <CardFooter price={10} />
-        </CardContent>
-      </Card>
-    </>
+    <div className="h-[100%]  flex relative flex-auto flex-col">
+      <Virtuoso
+        style={{
+          height: "100%",
+        }}
+        totalCount={1000}
+        itemContent={(index) => (
+          <Card image="/assets/margarita.png">
+            <CardContent>
+              <CardHeader>Teste {index}</CardHeader>
+              <CardDescription>Ola Pizza</CardDescription>
+              <CardFooter price={23.99} />
+            </CardContent>
+          </Card>
+        )}
+      />
+    </div>
   );
 };
